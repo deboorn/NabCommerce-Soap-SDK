@@ -1,0 +1,170 @@
+<?php
+
+
+/*
+ * LICENSE: This source file is subject to version 4.0 of the CC BY 4.0 license
+ * that is available through the world-wide-web at the following URI:
+ * http://creativecommons.org/licenses/by/4.0/.  If you did not receive a copy of
+ * the CC BY 4.0 License and are unable to obtain it through the web, please
+ * send a note to daniel.boorn@gmail.com so we can mail you a copy immediately.
+ *
+ * @author Daniel Boorn <daniel.boorn@gmail.com>
+ * @license http://creativecommons.org/licenses/by/4.0/ CC BY 4.0 *
+ * @package NabCommerce\Service
+ */
+
+ 
+
+
+function autoload_f41aed4a831bd196e31d18a30f5f94a0($class)
+{
+    $classes = array(
+        'NabCommerce\Service\SIS'                                             => __DIR__ . '/SIS.php',
+        'NabCommerce\Service\Ping'                                            => __DIR__ . '/Ping.php',
+        'NabCommerce\Service\PingResponse'                                    => __DIR__ . '/PingResponse.php',
+        'NabCommerce\Service\SignOnWithToken'                                 => __DIR__ . '/SignOnWithToken.php',
+        'NabCommerce\Service\SignOnWithTokenResponse'                         => __DIR__ . '/SignOnWithTokenResponse.php',
+        'NabCommerce\Service\GetServiceInformation'                           => __DIR__ . '/GetServiceInformation.php',
+        'NabCommerce\Service\GetServiceInformationResponse'                   => __DIR__ . '/GetServiceInformationResponse.php',
+        'NabCommerce\Service\ServiceInformation'                              => __DIR__ . '/ServiceInformation.php',
+        'NabCommerce\Service\ArrayOfBankcardService'                          => __DIR__ . '/ArrayOfBankcardService.php',
+        'NabCommerce\Service\BankcardService'                                 => __DIR__ . '/BankcardService.php',
+        'NabCommerce\Service\BankcardServiceAVSData'                          => __DIR__ . '/BankcardServiceAVSData.php',
+        'NabCommerce\Service\Operations'                                      => __DIR__ . '/Operations.php',
+        'NabCommerce\Service\CloseBatch'                                      => __DIR__ . '/CloseBatch.php',
+        'NabCommerce\Service\PurchaseCardLevel'                               => __DIR__ . '/PurchaseCardLevel.php',
+        'NabCommerce\Service\Tenders'                                         => __DIR__ . '/Tenders.php',
+        'NabCommerce\Service\PINDebitReturnSupportType'                       => __DIR__ . '/PINDebitReturnSupportType.php',
+        'NabCommerce\Service\CreditAuthorizeSupportType'                      => __DIR__ . '/CreditAuthorizeSupportType.php',
+        'NabCommerce\Service\QueryRejectedSupportType'                        => __DIR__ . '/QueryRejectedSupportType.php',
+        'NabCommerce\Service\PinDebitUndoSupportType'                         => __DIR__ . '/PinDebitUndoSupportType.php',
+        'NabCommerce\Service\BatchAssignmentSupport'                          => __DIR__ . '/BatchAssignmentSupport.php',
+        'NabCommerce\Service\CreditReturnSupportType'                         => __DIR__ . '/CreditReturnSupportType.php',
+        'NabCommerce\Service\TrackDataSupportType'                            => __DIR__ . '/TrackDataSupportType.php',
+        'NabCommerce\Service\CreditReversalSupportType'                       => __DIR__ . '/CreditReversalSupportType.php',
+        'NabCommerce\Service\PartialApprovalSupportType'                      => __DIR__ . '/PartialApprovalSupportType.php',
+        'NabCommerce\Service\ArrayOfElectronicCheckingService'                => __DIR__ . '/ArrayOfElectronicCheckingService.php',
+        'NabCommerce\Service\ElectronicCheckingService'                       => __DIR__ . '/ElectronicCheckingService.php',
+        'NabCommerce\Service\ArrayOfStoredValueService'                       => __DIR__ . '/ArrayOfStoredValueService.php',
+        'NabCommerce\Service\StoredValueService'                              => __DIR__ . '/StoredValueService.php',
+        'NabCommerce\Service\ArrayOfWorkflow'                                 => __DIR__ . '/ArrayOfWorkflow.php',
+        'NabCommerce\Service\Workflow'                                        => __DIR__ . '/Workflow.php',
+        'NabCommerce\Service\ArrayOfWorkflowService'                          => __DIR__ . '/ArrayOfWorkflowService.php',
+        'NabCommerce\Service\WorkflowService'                                 => __DIR__ . '/WorkflowService.php',
+        'NabCommerce\Service\SaveApplicationData'                             => __DIR__ . '/SaveApplicationData.php',
+        'NabCommerce\Service\ApplicationData'                                 => __DIR__ . '/ApplicationData.php',
+        'NabCommerce\Service\ApplicationLocation'                             => __DIR__ . '/ApplicationLocation.php',
+        'NabCommerce\Service\HardwareType'                                    => __DIR__ . '/HardwareType.php',
+        'NabCommerce\Service\PINCapability'                                   => __DIR__ . '/PINCapability.php',
+        'NabCommerce\Service\ReadCapability'                                  => __DIR__ . '/ReadCapability.php',
+        'NabCommerce\Service\EncryptionType'                                  => __DIR__ . '/EncryptionType.php',
+        'NabCommerce\Service\SaveApplicationDataResponse'                     => __DIR__ . '/SaveApplicationDataResponse.php',
+        'NabCommerce\Service\GetApplicationData'                              => __DIR__ . '/GetApplicationData.php',
+        'NabCommerce\Service\GetApplicationDataResponse'                      => __DIR__ . '/GetApplicationDataResponse.php',
+        'NabCommerce\Service\DeleteApplicationData'                           => __DIR__ . '/DeleteApplicationData.php',
+        'NabCommerce\Service\DeleteApplicationDataResponse'                   => __DIR__ . '/DeleteApplicationDataResponse.php',
+        'NabCommerce\Service\IsMerchantProfileInitialized'                    => __DIR__ . '/IsMerchantProfileInitialized.php',
+        'NabCommerce\Service\TenderType'                                      => __DIR__ . '/TenderType.php',
+        'NabCommerce\Service\IsMerchantProfileInitializedResponse'            => __DIR__ . '/IsMerchantProfileInitializedResponse.php',
+        'NabCommerce\Service\GetMerchantProfiles'                             => __DIR__ . '/GetMerchantProfiles.php',
+        'NabCommerce\Service\GetMerchantProfilesResponse'                     => __DIR__ . '/GetMerchantProfilesResponse.php',
+        'NabCommerce\Service\ArrayOfMerchantProfile'                          => __DIR__ . '/ArrayOfMerchantProfile.php',
+        'NabCommerce\Service\MerchantProfile'                                 => __DIR__ . '/MerchantProfile.php',
+        'NabCommerce\Service\MerchantProfileMerchantData'                     => __DIR__ . '/MerchantProfileMerchantData.php',
+        'NabCommerce\Service\TypeISOLanguageCodeA3'                           => __DIR__ . '/TypeISOLanguageCodeA3.php',
+        'NabCommerce\Service\AddressInfo'                                     => __DIR__ . '/AddressInfo.php',
+        'NabCommerce\Service\TypeStateProvince'                               => __DIR__ . '/TypeStateProvince.php',
+        'NabCommerce\Service\TypeISOCountryCodeA3'                            => __DIR__ . '/TypeISOCountryCodeA3.php',
+        'NabCommerce\Service\BankcardMerchantData'                            => __DIR__ . '/BankcardMerchantData.php',
+        'NabCommerce\Service\IndustryType'                                    => __DIR__ . '/IndustryType.php',
+        'NabCommerce\Service\ElectronicCheckingMerchantData'                  => __DIR__ . '/ElectronicCheckingMerchantData.php',
+        'NabCommerce\Service\StoredValueMerchantData'                         => __DIR__ . '/StoredValueMerchantData.php',
+        'NabCommerce\Service\MerchantProfileTransactionData'                  => __DIR__ . '/MerchantProfileTransactionData.php',
+        'NabCommerce\Service\BankcardTransactionDataDefaults'                 => __DIR__ . '/BankcardTransactionDataDefaults.php',
+        'NabCommerce\Service\TypeISOCurrencyCodeA3'                           => __DIR__ . '/TypeISOCurrencyCodeA3.php',
+        'NabCommerce\Service\CustomerPresent'                                 => __DIR__ . '/CustomerPresent.php',
+        'NabCommerce\Service\EntryMode'                                       => __DIR__ . '/EntryMode.php',
+        'NabCommerce\Service\RequestACI'                                      => __DIR__ . '/RequestACI.php',
+        'NabCommerce\Service\RequestAdvice'                                   => __DIR__ . '/RequestAdvice.php',
+        'NabCommerce\Service\AutoSettlement'                                  => __DIR__ . '/AutoSettlement.php',
+        'NabCommerce\Service\DuplicateCheck'                                  => __DIR__ . '/DuplicateCheck.php',
+        'NabCommerce\Service\RecurringBilling'                                => __DIR__ . '/RecurringBilling.php',
+        'NabCommerce\Service\GetMerchantProfileIds'                           => __DIR__ . '/GetMerchantProfileIds.php',
+        'NabCommerce\Service\GetMerchantProfileIdsResponse'                   => __DIR__ . '/GetMerchantProfileIdsResponse.php',
+        'NabCommerce\Service\GetMerchantProfilesByProfileId'                  => __DIR__ . '/GetMerchantProfilesByProfileId.php',
+        'NabCommerce\Service\GetMerchantProfilesByProfileIdResponse'          => __DIR__ . '/GetMerchantProfilesByProfileIdResponse.php',
+        'NabCommerce\Service\GetMerchantProfile'                              => __DIR__ . '/GetMerchantProfile.php',
+        'NabCommerce\Service\GetMerchantProfileResponse'                      => __DIR__ . '/GetMerchantProfileResponse.php',
+        'NabCommerce\Service\DeleteMerchantProfile'                           => __DIR__ . '/DeleteMerchantProfile.php',
+        'NabCommerce\Service\DeleteMerchantProfileResponse'                   => __DIR__ . '/DeleteMerchantProfileResponse.php',
+        'NabCommerce\Service\SaveMerchantProfiles'                            => __DIR__ . '/SaveMerchantProfiles.php',
+        'NabCommerce\Service\SaveMerchantProfilesResponse'                    => __DIR__ . '/SaveMerchantProfilesResponse.php',
+        'NabCommerce\Service\SignOnWithUsernamePasswordForServiceKey'         => __DIR__ . '/SignOnWithUsernamePasswordForServiceKey.php',
+        'NabCommerce\Service\SignOnWithUsernamePasswordForServiceKeyResponse' => __DIR__ . '/SignOnWithUsernamePasswordForServiceKeyResponse.php',
+        'NabCommerce\Service\ResetPasswordForServiceKey'                      => __DIR__ . '/ResetPasswordForServiceKey.php',
+        'NabCommerce\Service\ResetPasswordForServiceKeyResponse'              => __DIR__ . '/ResetPasswordForServiceKeyResponse.php',
+        'NabCommerce\Service\ChangePasswordForServiceKey'                     => __DIR__ . '/ChangePasswordForServiceKey.php',
+        'NabCommerce\Service\ChangePasswordForServiceKeyResponse'             => __DIR__ . '/ChangePasswordForServiceKeyResponse.php',
+        'NabCommerce\Service\ChangeUsernameForServiceKey'                     => __DIR__ . '/ChangeUsernameForServiceKey.php',
+        'NabCommerce\Service\ChangeUsernameForServiceKeyResponse'             => __DIR__ . '/ChangeUsernameForServiceKeyResponse.php',
+        'NabCommerce\Service\ChangeEmailForServiceKey'                        => __DIR__ . '/ChangeEmailForServiceKey.php',
+        'NabCommerce\Service\ChangeEmailForServiceKeyResponse'                => __DIR__ . '/ChangeEmailForServiceKeyResponse.php',
+        'NabCommerce\Service\GetPasswordExpirationForServiceKey'              => __DIR__ . '/GetPasswordExpirationForServiceKey.php',
+        'NabCommerce\Service\GetPasswordExpirationForServiceKeyResponse'      => __DIR__ . '/GetPasswordExpirationForServiceKeyResponse.php',
+        'NabCommerce\Service\ValidateMerchantProfile'                         => __DIR__ . '/ValidateMerchantProfile.php',
+        'NabCommerce\Service\ValidateMerchantProfileResponse'                 => __DIR__ . '/ValidateMerchantProfileResponse.php',
+        'NabCommerce\Service\GetAllClaims'                                    => __DIR__ . '/GetAllClaims.php',
+        'NabCommerce\Service\GetAllClaimsResponse'                            => __DIR__ . '/GetAllClaimsResponse.php',
+        'NabCommerce\Service\GetClaims'                                       => __DIR__ . '/GetClaims.php',
+        'NabCommerce\Service\GetClaimsResponse'                               => __DIR__ . '/GetClaimsResponse.php',
+        'NabCommerce\Service\Renew'                                           => __DIR__ . '/Renew.php',
+        'NabCommerce\Service\RenewResponse'                                   => __DIR__ . '/RenewResponse.php',
+        'NabCommerce\Service\SignOnAndAddClaims'                              => __DIR__ . '/SignOnAndAddClaims.php',
+        'NabCommerce\Service\SignOnAndAddClaimsResponse'                      => __DIR__ . '/SignOnAndAddClaimsResponse.php',
+        'NabCommerce\Service\DelegatedSignOn'                                 => __DIR__ . '/DelegatedSignOn.php',
+        'NabCommerce\Service\DelegatedSignOnResponse'                         => __DIR__ . '/DelegatedSignOnResponse.php',
+        'NabCommerce\Service\FederatedSignOn'                                 => __DIR__ . '/FederatedSignOn.php',
+        'NabCommerce\Service\FederatedSignOnResponse'                         => __DIR__ . '/FederatedSignOnResponse.php',
+        'NabCommerce\Service\FederatedSignOnAndAddClaims'                     => __DIR__ . '/FederatedSignOnAndAddClaims.php',
+        'NabCommerce\Service\FederatedSignOnAndAddClaimsResponse'             => __DIR__ . '/FederatedSignOnAndAddClaimsResponse.php',
+        'NabCommerce\Service\STSUnavailableFault'                             => __DIR__ . '/STSUnavailableFault.php',
+        'NabCommerce\Service\BaseFault'                                       => __DIR__ . '/BaseFault.php',
+        'NabCommerce\Service\ExpiredTokenFault'                               => __DIR__ . '/ExpiredTokenFault.php',
+        'NabCommerce\Service\InvalidTokenFault'                               => __DIR__ . '/InvalidTokenFault.php',
+        'NabCommerce\Service\AuthenticationFault'                             => __DIR__ . '/AuthenticationFault.php',
+        'NabCommerce\Service\LockedByAdminFault'                              => __DIR__ . '/LockedByAdminFault.php',
+        'NabCommerce\Service\PasswordExpiredFault'                            => __DIR__ . '/PasswordExpiredFault.php',
+        'NabCommerce\Service\OneTimePasswordFault'                            => __DIR__ . '/OneTimePasswordFault.php',
+        'NabCommerce\Service\BadAttemptThresholdExceededFault'                => __DIR__ . '/BadAttemptThresholdExceededFault.php',
+        'NabCommerce\Service\SendEmailFault'                                  => __DIR__ . '/SendEmailFault.php',
+        'NabCommerce\Service\GeneratePasswordFault'                           => __DIR__ . '/GeneratePasswordFault.php',
+        'NabCommerce\Service\PasswordInvalidFault'                            => __DIR__ . '/PasswordInvalidFault.php',
+        'NabCommerce\Service\UserNotFoundFault'                               => __DIR__ . '/UserNotFoundFault.php',
+        'NabCommerce\Service\InvalidEmailFault'                               => __DIR__ . '/InvalidEmailFault.php',
+        'NabCommerce\Service\ArrayOfClaimMetaData'                            => __DIR__ . '/ArrayOfClaimMetaData.php',
+        'NabCommerce\Service\ClaimMetaData'                                   => __DIR__ . '/ClaimMetaData.php',
+        'NabCommerce\Service\RelyingPartyNotAssociatedToSecurityDomainFault'  => __DIR__ . '/RelyingPartyNotAssociatedToSecurityDomainFault.php',
+        'NabCommerce\Service\ClaimNotFoundFault'                              => __DIR__ . '/ClaimNotFoundFault.php',
+        'NabCommerce\Service\AuthorizationFault'                              => __DIR__ . '/AuthorizationFault.php',
+        'NabCommerce\Service\SystemFault'                                     => __DIR__ . '/SystemFault.php',
+        'NabCommerce\Service\NonRenewableTokenFault'                          => __DIR__ . '/NonRenewableTokenFault.php',
+        'NabCommerce\Service\ClaimMappingsNotFoundFault'                      => __DIR__ . '/ClaimMappingsNotFoundFault.php',
+        'NabCommerce\Service\CWSFault'                                        => __DIR__ . '/CWSFault.php',
+        'NabCommerce\Service\CWSBaseFault'                                    => __DIR__ . '/CWSBaseFault.php',
+        'NabCommerce\Service\CWSServiceInformationUnavailableFault'           => __DIR__ . '/CWSServiceInformationUnavailableFault.php',
+        'NabCommerce\Service\CWSValidationResultFault'                        => __DIR__ . '/CWSValidationResultFault.php',
+        'NabCommerce\Service\ArrayOfCWSValidationErrorFault'                  => __DIR__ . '/ArrayOfCWSValidationErrorFault.php',
+        'NabCommerce\Service\CWSValidationErrorFault'                         => __DIR__ . '/CWSValidationErrorFault.php',
+        'NabCommerce\Service\CWSValidationErrorFaultEErrorType'               => __DIR__ . '/CWSValidationErrorFaultEErrorType.php',
+        'NabCommerce\Service\ArrayOfstring'                                   => __DIR__ . '/ArrayOfstring.php'
+    );
+    if (!empty($classes[$class])) {
+        include $classes[$class];
+    };
+}
+
+spl_autoload_register('autoload_f41aed4a831bd196e31d18a30f5f94a0');
+
+// Do nothing. The rest is just leftovers from the code generation.
+{
+}
