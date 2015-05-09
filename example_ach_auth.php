@@ -23,11 +23,9 @@ require('NabCommerce/autoload.php');
 
 use NabCommerce\Api;
 use NabCommerce\Transaction;
-use NabCommerce\Service;
-
 
 /**
- * Example of ACH Auth Request
+ * Example of ACH Auth Request with Chain
  */
 
 $config = array(
@@ -37,32 +35,29 @@ $config = array(
     'workflowId'           => "",
 );
 
-$nab = new \NabCommerce\Api($config['identityToken'], $config['applicationProfileId'], $config['workflowId'], $config['merchantProfileId']);
+$nab = new Api($config['identityToken'], $config['applicationProfileId'], $config['workflowId'], $config['merchantProfileId']);
 
+$name = (new Transaction\NameInfo())
+    ->setFirst('John')->setLast('Doe');
 
-$transaction = new NabCommerce\Transaction\ElectronicCheckingTransaction();
+$address = (new Transaction\AddressInfo('USA'))
+    ->setStreet1('123 Someplace Dr')
+    ->setCity('Myrtle Beach')
+    ->setPostalCode('29579');
 
-$name = new NabCommerce\Transaction\NameInfo();
-$name->setFirst('John')->setLast('Doe');
+$billingData = (new Transaction\CustomerInfo())
+    ->setName($name)
+    ->setAddress($address);
 
-$address = new NabCommerce\Transaction\AddressInfo('USA');
-$address->setStreet1('123 Someplace Dr');
-$address->setCity('Myrtle Beach');
-$address->setPostalCode('29579');
+$customerData = (new Transaction\ElectronicCheckingCustomerData())
+    ->setBillingData($billingData);
 
-$billingData = new NabCommerce\Transaction\CustomerInfo();
-$billingData->setName($name);
-$billingData->setAddress($address);
+$checkData = (new Transaction\CheckData(Transaction\CheckCountryCode::US, Transaction\OwnerType::Personal, Transaction\UseType::Checking))
+    ->setAccountNumber('3213213219')
+    ->setRoutingNumber('490000018');
 
-$customerData = new NabCommerce\Transaction\ElectronicCheckingCustomerData();
-$customerData->setBillingData($billingData);
-$transaction->setCustomerData($customerData);
-
-$tenderData = new Transaction\ElectronicCheckingTenderData();
-$checkData = new Transaction\CheckData(Transaction\CheckCountryCode::US, Transaction\OwnerType::Personal, Transaction\UseType::Checking);
-$checkData->setAccountNumber('3213213219')->setRoutingNumber('490000018');
-$tenderData->setCheckData($checkData);
-$transaction->setTenderData($tenderData);
+$tenderData = (new Transaction\ElectronicCheckingTenderData())
+    ->setCheckData($checkData);
 
 $transData = new Transaction\ElectronicCheckingTransactionData(
     '10.25', // amount
@@ -75,30 +70,24 @@ $transData = new Transaction\ElectronicCheckingTransactionData(
     Transaction\TransactionType::Debit,
     Transaction\TxnCodeType::Conversion
 );
+
+$transaction = new Transaction\ElectronicCheckingTransaction();
+$transaction->setCustomerData($customerData);
+$transaction->setTenderData($tenderData);
 $transaction->setTransactionData($transData);
 
-
-$request = new \NabCommerce\Transaction\Authorize(
+$request = (new Transaction\Authorize(
     $nab->getSessionToken(),
     $transaction,
     $nab->getApplicationProfileId(),
     $nab->getMerchantProfileId(),
     $nab->getWorkflowId()
-);
-$request->setTransaction($transaction);
+))->setTransaction($transaction);
 
-$soap = $nab->transaction();
-try{
-    $r = $soap->Authorize($request);
-    var_dump($r);
-}catch (SoapFault $e){
-    var_dump(
-        $soap->__getLastRequestHeaders(),
-        $soap->__getLastRequest(),
-        $soap->__getLastResponse(),
-        $soap->__getLastResponseHeaders()
-    );
+
+try {
+    $result = $nab->transaction()->Authorize($request);
+    var_dump($result);
+} catch (Exception $e) {
     var_dump($e);
-    die();
 }
-
