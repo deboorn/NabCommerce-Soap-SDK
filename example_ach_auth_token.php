@@ -37,6 +37,10 @@ $config = array(
 
 $nab = new Api($config['identityToken'], $config['applicationProfileId'], $config['workflowId'], $config['merchantProfileId']);
 
+
+$paymentToken = '7cd40734-076b-4502-8bef-f812de61b164b62a9b23-fcc5-4db2-9694-db4c943a4596';
+
+
 $name = (new Transaction\NameInfo())
     ->setFirst('John')->setLast('Doe');
 
@@ -53,14 +57,14 @@ $customerData = (new Transaction\ElectronicCheckingCustomerData())
     ->setBillingData($billingData);
 
 $checkData = (new Transaction\CheckData(Transaction\CheckCountryCode::US, Transaction\OwnerType::Personal, Transaction\UseType::Checking))
-    ->setAccountNumber('3213213219')
     ->setRoutingNumber('490000018');
 
 $tenderData = (new Transaction\ElectronicCheckingTenderData())
-    ->setCheckData($checkData);
+    ->setCheckData($checkData)
+    ->setPaymentAccountDataToken($paymentToken);
 
 $transData = new Transaction\ElectronicCheckingTransactionData(
-    '10.25', // amount
+    '10.33', // amount
     Transaction\TypeISOCurrencyCodeA3::USD,
     false, // ignore duplicate check
     new DateTime(), // effective date
